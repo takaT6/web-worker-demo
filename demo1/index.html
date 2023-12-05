@@ -1,8 +1,8 @@
 <html>
   <div>
     <div id="time"></div>
-    <button type="button" id="button1">メインスレッドで高負担処理を実行</button>
-    <button type="button" id="button2">ワーカースレッドで高負担処理を実行</button>
+    <button type="button" id="button1">メインスレッドで高負荷処理を実行</button>
+    <button type="button" id="button2">ワーカースレッドで高負荷処理を実行</button>
   </div>
   <div id="text"></div>
 </html>
@@ -22,8 +22,8 @@
     for (let i = 0; i < 1e10; i++) {
       result += i;
     }
-    document.getElementById('text').insertAdjacentHTML('afterbegin', '<strong>メインスレッドで処理しました。</strong><br/>');
     console.log("メインスレッドでの計算が終わりました！");
+    document.getElementById('text').insertAdjacentHTML('afterbegin', '<strong>メインスレッドで処理しました。</strong><br/>');
   });
 
   /* ワーカーレッドに重たい処理をさせる */
