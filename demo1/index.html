@@ -1,0 +1,41 @@
+<html>
+  <div>
+    <div id="time"></div>
+    <button type="button" id="button1">メインスレッドで高負担処理を実行</button>
+    <button type="button" id="button2">ワーカースレッドで高負担処理を実行</button>
+  </div>
+  <div id="text"></div>
+</html>
+<script>
+
+  /* タイマー処理 */
+  let time = 0;
+  const timer = () => {
+    time++;
+    document.getElementById("time").innerHTML = time; 
+  }
+  setInterval(timer, 100);
+
+  /* メインスレッドに重たい処理をさせる */
+  document.getElementById("button1").addEventListener("click", ()=>{
+    let result;
+    for (let i = 0; i < 1e10; i++) {
+      result += i;
+    }
+    document.getElementById('text').insertAdjacentHTML('afterbegin', '<strong>メインスレッドで処理しました。</strong><br/>');
+    console.log("メインスレッドでの計算が終わりました！");
+  });
+
+  /* ワーカーレッドに重たい処理をさせる */
+  const myWorker = new Worker("worker.js");
+  // ボタン２が押されたら、ワーカーにメッセージを送る
+  document.getElementById("button2").addEventListener("click", () => {
+    myWorker.postMessage("calculate!");
+  });
+  // ワーカーからのメッセージが返ってきたときの処理
+  myWorker.addEventListener("message", () =>{
+    document.getElementById('text').insertAdjacentHTML('afterbegin', '<strong>ワーカースレッドで処理しました。</strong><br/>');
+  });
+
+  // ウィンドウの表示が重たいよねのでも＝＞ユーザビリティがさがっちゃうよね
+</script>
