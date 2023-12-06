@@ -25,6 +25,8 @@ export class Main {
     if (location.hash) {
       const hashValue = location.hash.split("#").join("");
       this.useWorker = hashValue === "on";
+      if (hashValue === "on")console.log("workerを使います。");
+      else console.log("workerは使いません。");
     }
 
     // Canvas要素を取得
