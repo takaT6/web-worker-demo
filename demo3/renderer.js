@@ -60,17 +60,17 @@ export class Main {
       }
     }
 
-    // ハートボタンの初期化
-    const btn = document.getElementById("btn");
-    let clicked = false;
-    btn.addEventListener("click", () => {
-      if (clicked) {
-        btn.classList.remove("clicked");
-      } else {
-        btn.classList.add("clicked");
-      }
-      clicked = !clicked;
-    });
+    // // ハートボタンの初期化
+    // const btn = document.getElementById("btn");
+    // let clicked = false;
+    // btn.addEventListener("click", () => {
+    //   if (clicked) {
+    //     btn.classList.remove("clicked");
+    //   } else {
+    //     btn.classList.add("clicked");
+    //   }
+    //   clicked = !clicked;
+    // });
 
     // Statsの初期化
     this.stats = new Stats();
