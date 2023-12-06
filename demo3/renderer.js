@@ -105,7 +105,7 @@ export class Main {
       const offscreenCanvas = canvas.transferControlToOffscreen();
 
       // Workerを作成し、OffscreenCanvasを渡す
-      this.worker = new Worker("js/worker.js");
+      this.worker = new Worker("demo3/worker.js");
       this.worker.postMessage(
         { type: "init", canvas: offscreenCanvas, num: data.num },
         [offscreenCanvas]
