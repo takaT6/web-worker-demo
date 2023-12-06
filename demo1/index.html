@@ -19,7 +19,7 @@
   /* メインスレッドに重たい処理をさせる */
   document.getElementById("button1").addEventListener("click", ()=>{
     let result;
-    for (let i = 0; i < 1e10; i++) {
+    for (let i = 0; i < 1e9; i++) {
       result += i;
     }
     console.log("メインスレッドでの計算が終わりました！");
@@ -36,4 +36,6 @@
   myWorker.addEventListener("message", () =>{
     document.getElementById('text').insertAdjacentHTML('afterbegin', '<strong>ワーカースレッドで処理しました。</strong><br/>');
   });
+
+
 </script>

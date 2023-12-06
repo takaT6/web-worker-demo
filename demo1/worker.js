@@ -2,7 +2,7 @@
 self.addEventListener("message", (e) => {
   // メッセージを受け取ったときに動かすコード
   let result;
-  for (let i = 0; i < 1e10; i++) {
+  for (let i = 0; i < 1e9; i++) {
     result += i;
   }
   self.postMessage("finish!");
