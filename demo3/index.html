@@ -1,102 +1,29 @@
 <!DOCTYPE html>
-<html labg="en">
+<html lang="ja" dir="ltr">
 
 <head>
-  <meta chrset="utf-8" />
-  <title>Modal Demo</title>
-  <link rel="stylesheet" href="demo2/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+  <meta name="google" content="notranslate" />
+  <title>OffscreenCanvas 2D Demo</title>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.js"></script>
+  <script defer src="demo3/heavyrendering2d.js"></script>
+  <script defer src="demo3/main.js" type="module"></script>
+  <link rel="stylesheet" href="demo3/style.css" />
 </head>
 
 <body>
-  <div><button id="modalOpen1" class="button">「モーダル」を開く</button></div>
-  <div><button id="modalOpen2" class="button">「モーダル+メインスレッド高負荷処理」を開く</button></div>
-  <div><button id="modalOpen3" class="button">「モーダル+ワーカースレッド高負荷処理」を開く</button></div>
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1>Modal Window 1</h1>
-      </div>
-      <div class="modal-body">
-        <p>普通のモーダルウインドウです。</p>
-        <span id="modalClose1" class="modalClose">×閉じる</span>
-      </div>
-    </div>
-  </div>
-  <div id="modal2" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1>Modal Window 2</h1>
-      </div>
-      <div class="modal-body">
-        <p>後ではメインスレッドで高負荷の計算処理が走っています。</p>
-        <p>処理の間、下の閉じるボタンが機能しなくなります。</p>
-        <span id="modalClose2" class="modalClose">×閉じる</span>
-      </div>
-    </div>
-  </div><div id="modal3" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1>Modal Window 3</h1>
-      </div>
-      <div class="modal-body">
-        <p>後ではワーカースレッドで高負荷の計算処理が走っています。</p>
-        <p>処理の中でも下の閉じるボタンを押すことができます。</p>
-        <span id="modalClose3" class="modalClose">×閉じる</span>
-      </div>
-    </div>
-  </div>
+  <div id="contents">
+    <p id="notSupportedDescription">
+      ※このデモはOffscreenCanvasで作成しています。<a href="https://caniuse.com/offscreencanvas"
+        target="_blank">OffscreenCanvasに対応したブラウザ</a>でご覧ください。
+    </p>
+    <canvas id="myCanvas"></canvas>
+    <div id="guiContainer"></div>
+  <p class="onOff">
+    オフスクリーンキャンバス <a href="./index.html#on">ON</a> /
+    <a href="./#off">OFF</a>
+  </p>
 </body>
 
 </html>
-
-<script>
-  function highLoad(){
-    let result;
-    for (let i = 0; i < 1e10; i++) {
-      result += i;
-    }
-  }
-
-  /* ------------------------------------------------------------------------ */
-  const buttonOpen1 = document.getElementById('modalOpen1');
-  const modal1 = document.getElementById('modal1');
-  const buttonClose1 = document.getElementById('modalClose1');
-
-  // ボタンがクリックされた時
-  buttonOpen1.addEventListener('click', ()=> modal1.style.display = 'block');
-
-  // バツ印がクリックされた時
-  buttonClose1.addEventListener('click', ()=> modal1.style.display = 'none');
-
-  /* ------------------------------------------------------------------------ */
-
-  const buttonOpen2 = document.getElementById('modalOpen2');
-  const modal2 = document.getElementById('modal2');
-  const buttonClose2 = document.getElementById('modalClose2');
-
-  // ボタンがクリックされた時
-  buttonOpen2.addEventListener('click', () => {
-    modal2.style.display = 'block';
-    setTimeout(highLoad, 100);
-  });
-
-  // バツ印がクリックされた時
-  buttonClose2.addEventListener('click', () => modal2.style.display = 'none');
-
-  /* ------------------------------------------------------------------------ */
-
-  const buttonOpen3 = document.getElementById('modalOpen3');
-  const modal3 = document.getElementById('modal3');
-  const buttonClose3 = document.getElementById('modalClose3');
-
-  const myWorker = new Worker("demo1/worker.js");
-
-  // ボタンがクリックされた時
-  buttonOpen3.addEventListener('click', () => {
-    modal3.style.display = 'block';
-    myWorker.postMessage("calculate!");
-  });
-
-  // バツ印がクリックされた時
-  buttonClose3.addEventListener('click', () => modal3.style.display = 'none');
-</script>

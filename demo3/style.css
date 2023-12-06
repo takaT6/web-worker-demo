@@ -1,76 +1,602 @@
+@charset "UTF-8";
+
 body {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #fff;
+  margin: 0;
+  height: 0;
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
-.button {
-  background: lightblue;
-  color: #000000;
-  padding: 0 2em;
-  border: 0;
-  height: 100px;
-  border-radius: 5px;
-  font-weight: 900;
+#contents {
   position: relative;
 }
 
-.button:hover {
-  background: lightcoral;
-  cursor: pointer;
-}
-
-.modal {
+#notSupportedDescription {
   display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+}
+
+#svgContainer {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0.95);
+  text-align: center;
 }
 
-.modal-content {
-  background-color: #f4f4f4;
-  margin: 20% auto;
-  width: 50%;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation-name: modalopen;
-  animation-duration: 1s;
+#guiContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-@keyframes modalopen {
-  from {
-    opacity: 0
-  }
-
-  to {
-    opacity: 1
-  }
+#svgContainer p {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
-.modal-header h1 {
-  margin: 1rem 0;
+.onOff {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px 8px;
+  background-color: white;
+  border-radius: 6px 0 0 0;
 }
 
-.modal-header {
-  background: lightblue;
-  padding: 3px 15px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.modalClose {
-  font-size: 2rem;
-}
-
-.modalClose:hover {
+.likeButton {
   cursor: pointer;
 }
 
-.modal-body {
-  padding: 10px 20px;
-  color: black;
+.likeButton .border {
+  fill: white;
+}
+
+.likeButton .explosion {
+  transform-origin: 250px 250px;
+  transform: scale(0.02);
+  stroke: #dd4688;
+  fill: none;
+  opacity: 0;
+  stroke-width: 1;
+  transform-origin: 250px 250px;
+}
+
+.likeButton .particleLayer {
+  opacity: 0;
+}
+
+.likeButton .particleLayer circle {
+  opacity: 0;
+  transform-origin: 250px 250px;
+}
+
+.likeButton .heart {
+  fill: rgba(6, 6, 6, 0.24);
+  transform: scale(0.8);
+  transform-origin: 250px 250px;
+}
+
+.likeButton.clicked .explosion {
+  animation: explosionAnime 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .heart {
+  animation: heartAnime 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer {
+  animation: particleLayerAnime 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(1) {
+  animation: particleAnimate1 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(2) {
+  animation: particleAnimate2 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(3) {
+  animation: particleAnimate3 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(4) {
+  animation: particleAnimate4 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(5) {
+  animation: particleAnimate5 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(6) {
+  animation: particleAnimate6 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(7) {
+  animation: particleAnimate7 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(8) {
+  animation: particleAnimate8 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(9) {
+  animation: particleAnimate9 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(10) {
+  animation: particleAnimate10 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(11) {
+  animation: particleAnimate11 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(12) {
+  animation: particleAnimate12 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(13) {
+  animation: particleAnimate13 800ms;
+  animation-fill-mode: forwards;
+}
+
+.likeButton.clicked .particleLayer circle:nth-child(14) {
+  animation: particleAnimate14 800ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes explosionAnime {
+  0% {
+    opacity: 0;
+    transform: scale(0.01);
+  }
+
+  1% {
+    opacity: 1;
+    transform: scale(0.01);
+  }
+
+  5% {
+    stroke-width: 200;
+  }
+
+  20% {
+    stroke-width: 300;
+  }
+
+  50% {
+    stroke: #cc8ef5;
+    transform: scale(1.1);
+    stroke-width: 1;
+  }
+
+  50.1% {
+    stroke-width: 0;
+  }
+
+  100% {
+    stroke: #cc8ef5;
+    transform: scale(1.1);
+    stroke-width: 0;
+  }
+}
+
+@keyframes particleLayerAnime {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  31% {
+    opacity: 1;
+  }
+
+  60% {
+    transform: translate(0, 0);
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(0, -20px);
+  }
+}
+
+@keyframes particleAnimate1 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-16px, -59px);
+  }
+
+  90% {
+    transform: translate(-16px, -59px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-16px, -59px);
+  }
+}
+
+@keyframes particleAnimate2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(41px, 43px);
+  }
+
+  90% {
+    transform: translate(41px, 43px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(41px, 43px);
+  }
+}
+
+@keyframes particleAnimate3 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(50px, -48px);
+  }
+
+  90% {
+    transform: translate(50px, -48px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(50px, -48px);
+  }
+}
+
+@keyframes particleAnimate4 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-39px, 36px);
+  }
+
+  90% {
+    transform: translate(-39px, 36px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-39px, 36px);
+  }
+}
+
+@keyframes particleAnimate5 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-39px, 32px);
+  }
+
+  90% {
+    transform: translate(-39px, 32px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-39px, 32px);
+  }
+}
+
+@keyframes particleAnimate6 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(48px, 6px);
+  }
+
+  90% {
+    transform: translate(48px, 6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(48px, 6px);
+  }
+}
+
+@keyframes particleAnimate7 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-69px, -36px);
+  }
+
+  90% {
+    transform: translate(-69px, -36px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-69px, -36px);
+  }
+}
+
+@keyframes particleAnimate8 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-12px, -52px);
+  }
+
+  90% {
+    transform: translate(-12px, -52px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-12px, -52px);
+  }
+}
+
+@keyframes particleAnimate9 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-43px, -21px);
+  }
+
+  90% {
+    transform: translate(-43px, -21px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-43px, -21px);
+  }
+}
+
+@keyframes particleAnimate10 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-10px, 47px);
+  }
+
+  90% {
+    transform: translate(-10px, 47px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-10px, 47px);
+  }
+}
+
+@keyframes particleAnimate11 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(66px, -9px);
+  }
+
+  90% {
+    transform: translate(66px, -9px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(66px, -9px);
+  }
+}
+
+@keyframes particleAnimate12 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(40px, -45px);
+  }
+
+  90% {
+    transform: translate(40px, -45px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(40px, -45px);
+  }
+}
+
+@keyframes particleAnimate13 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(29px, 24px);
+  }
+
+  90% {
+    transform: translate(29px, 24px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(29px, 24px);
+  }
+}
+
+@keyframes particleAnimate14 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  80% {
+    transform: translate(-10px, 50px);
+  }
+
+  90% {
+    transform: translate(-10px, 50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-10px, 50px);
+  }
+}
+
+@keyframes heartAnime {
+  0% {
+    transform: scale(0);
+    fill: #e2264d;
+  }
+
+  39% {
+    transform: scale(0);
+  }
+
+  60% {
+    transform: scale(1.2, 1.2);
+  }
+
+  70% {
+    transform: scale(1, 1) translate(0%, -10%);
+  }
+
+  75% {
+    transform: scale(1.1, 0.9) translate(0%, 5%);
+  }
+
+  80% {
+    transform: scale(0.95, 1.05) translate(0%, -3%);
+  }
+
+  100% {
+    transform: scale(1, 1) translate(0%, 0%);
+    fill: #e2264d;
+  }
 }
