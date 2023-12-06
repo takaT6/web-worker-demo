@@ -1,5 +1,5 @@
 // Workerでの処理に必要な外部スクリプトを読み込む
-importScripts("demo3/heavyrendering2d.js");
+importScripts("heavyrendering2d.js");
 
 /**
  * Workerスレッドで動作する処理です。
