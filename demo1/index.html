@@ -28,6 +28,20 @@
 
   /* ワーカーレッドに重たい処理をさせる */
   const myWorker = new Worker("demo1/worker.js");
+
+  // const blob = new Blob([
+  //     `self.addEventListener("message", (e) => {
+  //       // メッセージを受け取ったときに動かすコード
+  //       let result;
+  //       for (let i = 0; i < 1e9; i++) {
+  //         result += i;
+  //       }
+  //       self.postMessage("finish!");
+  //       console.log("ワーカーレッドでの計算が終わりました！");
+  //     });`]);
+  // const blobURL = URL.createObjectURL(blob);
+  // const myWorker = new Worker(blobURL);
+
   // ボタン２が押されたら、ワーカーにメッセージを送る
   document.getElementById("button2").addEventListener("click", () => {
     myWorker.postMessage("calculate!");
