@@ -80,12 +80,12 @@ export class Main {
 
     // UIの初期化
     const GUI = function () {
-      this.num = 20000;
+      this.num = 10000;
     };
     const data = new GUI();
 
     const gui = new dat.GUI({ autoPlace: false });
-    const numSlider = gui.add(data, "num", 500, 60000).step(500);
+    const numSlider = gui.add(data, "num", 500, 100000).step(500);
     numSlider.onFinishChange((value) => {
       if (this.useWorker) {
         // Workerスレッドでレンダリングする場合
