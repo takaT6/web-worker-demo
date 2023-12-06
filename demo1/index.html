@@ -27,7 +27,7 @@
   });
 
   /* ワーカーレッドに重たい処理をさせる */
-  const myWorker = new Worker("worker.js");
+  const myWorker = new Worker("demo1/worker.js");
   // ボタン２が押されたら、ワーカーにメッセージを送る
   document.getElementById("button2").addEventListener("click", () => {
     myWorker.postMessage("calculate!");
@@ -36,6 +36,4 @@
   myWorker.addEventListener("message", () =>{
     document.getElementById('text').insertAdjacentHTML('afterbegin', '<strong>ワーカースレッドで処理しました。</strong><br/>');
   });
-
-  // ウィンドウの表示が重たいよねのでも＝＞ユーザビリティがさがっちゃうよね
 </script>
