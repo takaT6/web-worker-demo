@@ -80,7 +80,7 @@ export class Main {
 
     // UIの初期化
     const GUI = function () {
-      this.num = 60000;
+      this.num = 20000;
     };
     const data = new GUI();
 
